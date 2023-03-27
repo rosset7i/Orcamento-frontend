@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <span>Orçamento</span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <div>
+        <a mat-button [routerLink]="['/home']">
+          <mat-icon>home</mat-icon>
+        </a>
+      </div>
+      <div>
+        <a mat-button [routerLink]="['/login']">
+          <mat-icon>add_box</mat-icon>
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content-wrapper container mt-5">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
