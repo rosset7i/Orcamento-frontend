@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -10,17 +10,18 @@ import {RegisterRequest} from "./models/register-request";
 })
 export class AuthenticationService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   register(registerRequest: RegisterRequest): Observable<RegisterRequest> {
     return this.httpClient.post<RegisterRequest>(
-      'https://localhost:44332/api/authentication/register',
+      'https://localhost:7193/api/authentication/register',
       registerRequest);
   }
 
   login(loginRequest: LoginRequest): Observable<LoginRequest> {
     return this.httpClient.post<LoginRequest>(
-      'https://localhost:44332/api/authentication/login',
+      'https://localhost:7193/api/authentication/login',
       loginRequest);
   }
 }

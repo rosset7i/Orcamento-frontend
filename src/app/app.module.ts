@@ -1,32 +1,34 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AngularMaterialModule } from "./angular-material/angular-material.module";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from './app-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
-import { LoginFormComponent } from './authentication/login-form/login-form.component';
-import { RegisterFormComponent } from './authentication/register-form/register-form.component';
-import { HomeComponent } from './home/home.component';
+import {AppComponent} from './app.component';
+import {MainAreaComponent} from './main-area/main-area.component';
+import {NavBarComponent} from './main-area/nav-bar/nav-bar.component';
+import {FooterComponent} from './main-area/footer/footer.component';
+import {HttpClientModule} from "@angular/common/http";
+import {AuthLayoutComponent} from './main-area/auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent,
-    RegisterFormComponent,
-    HomeComponent,
+    MainAreaComponent,
+    NavBarComponent,
+    FooterComponent,
+    AuthLayoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule,
-    ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
+  exports: [
+    AuthLayoutComponent
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
