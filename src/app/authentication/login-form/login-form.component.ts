@@ -27,7 +27,6 @@ export class LoginFormComponent {
   onSubmit(){
     console.log(this.form.value as RegisterRequest)
     this.authenticationService.login(this.form.value).subscribe(x => {
-      console.log(x);
     });
   }
 }
