@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+
 import {AuthGuard} from "./auth/auth.guard";
 import {AuthLayoutComponent} from "./main-area/auth-layout/auth-layout.component";
 
