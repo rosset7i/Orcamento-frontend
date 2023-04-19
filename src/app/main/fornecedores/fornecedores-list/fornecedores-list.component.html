@@ -1,77 +1,68 @@
 <h3 class="text-dark mb-4">Fornecedores</h3>
+
 <div class="card shadow">
   <div class="card-body">
+
     <div class="row">
-      <div class="col-md-6 text-nowrap">
-        <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Mostrar<select
-          class="form-control form-control-sm custom-select custom-select-sm">
-          <option value="10" selected="">10</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>&nbsp;</label></div>
+      <div class="col-9">
       </div>
-      <div class="col-md-6">
-        <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search"
-                                                                                         class="form-control form-control-sm"
-                                                                                         aria-controls="dataTable"
-                                                                                         placeholder="Pesquisar"></label>
-        </div>
+      <div class="col-3">
+        <input matInput class="form-control form-control-sm " placeholder="Pesquisar">
       </div>
     </div>
-    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-      <table class="table my-0" id="dataTable">
-        <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Endereço</th>
-          <th>Telefone</th>
-          <th>Editar</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi
-            Satou
-          </td>
-          <td>Accountant</td>
-          <td>Tokyo</td>
-          <td>
-            <button class="btn btn-primary py-1" type="button"><i class="fas fa-search"></i></button>
-          </td>
-        </tr>
-        <tr></tr>
-        <tr></tr>
-        </tbody>
-        <tfoot>
-        <tr>
-          <td><strong>Nome</strong></td>
-          <td><strong>Endereço</strong></td>
-          <td><strong>Telefone</strong></td>
-          <td><strong>Editar</strong></td>
-        </tr>
-        </tfoot>
-      </table>
-    </div>
-    <div class="row">
-      <div class="col-md-6 align-self-center">
-        <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of
-          27</p>
-      </div>
-      <div class="col-md-6">
-        <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-          <ul class="pagination">
-            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span
-              aria-hidden="true">«</span></a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
-              aria-hidden="true">»</span></a></li>
-          </ul>
-        </nav>
-      </div>
+
+    <div class="table-responsive table mt-2">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="avatar">
+          <mat-header-cell *matHeaderCellDef> Avatar</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <img class="rounded-circle my-1" width="75" height="75" src="assets/img/avatars/avatar1.jpeg">
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="age">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Age</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Email
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-button color="primary">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button mat-button color="warn">
+              <i class="fas fa-trash"></i>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+
+      <mat-paginator
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
     </div>
   </div>
 </div>
+
+
 

@@ -24,7 +24,6 @@ import {MatSortModule} from "@angular/material/sort";
     MatPaginatorModule,
     MatInputModule,
     MatCardModule,
-    MatTableModule,
     MatSortModule,
   ]
 })
