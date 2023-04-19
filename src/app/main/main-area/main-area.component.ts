@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-
-import {AuthenticationService} from "../auth/authentication.service";
+import {ViewportScroller} from "@angular/common";
 
 @Component({
   selector: 'app-main-area',
@@ -9,7 +8,7 @@ import {AuthenticationService} from "../auth/authentication.service";
 })
 export class MainAreaComponent implements OnInit {
 
-  constructor(public authenticationService: AuthenticationService) {
+  constructor(private viewport: ViewportScroller) {
   }
 
   ngOnInit(): void {
@@ -20,6 +19,10 @@ export class MainAreaComponent implements OnInit {
     //TODO migrar para angular utilizando ngClass
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('toggled');
+  }
+
+  scrollToTop() {
+    this.viewport.scrollToPosition([0, 0]);
   }
 
 }

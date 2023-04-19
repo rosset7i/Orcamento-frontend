@@ -24,11 +24,15 @@ export class LoginFormComponent {
   }
 
   canSave() {
-    return this.form.valid ? false : true;
+    return !this.form.valid;
   }
 
   save() {
-    this.authenticationService.login(this.form.value).subscribe();
-    this.router.navigate(['produtos']);
+    this.authenticationService.login(this.form.value)
+      .subscribe(authResponse => {
+        if (authResponse.token) {
+          this.router.navigate(['main/perfil']);
+        }
+      });
   }
 }

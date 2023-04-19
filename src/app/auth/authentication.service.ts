@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Router} from "@angular/router";
 
 import {LoginRequest} from "./models/login-request";
 import {RegisterRequest} from "./models/register-request";
+import {LoginResponse} from "./models/login-response";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ import {RegisterRequest} from "./models/register-request";
 export class AuthenticationService {
   public isAuthenticated = true;
 
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private httpClient: HttpClient) {
   }
 
   register(registerRequest: RegisterRequest): Observable<RegisterRequest> {
@@ -21,9 +21,8 @@ export class AuthenticationService {
       registerRequest);
   }
 
-  login(loginRequest: LoginRequest): Observable<LoginRequest> {
-    this.router.navigate(['perfil']);
-    return this.httpClient.post<LoginRequest>(
+  login(loginRequest: LoginRequest): Observable<LoginResponse> {
+    return this.httpClient.post<LoginResponse>(
       'https://localhost:7193/api/authentication/login',
       loginRequest);
   }

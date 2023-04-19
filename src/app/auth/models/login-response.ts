@@ -1,4 +1,4 @@
-export interface RegisterResponse {
+export interface LoginResponse {
   email: string;
   token: string;
 }
